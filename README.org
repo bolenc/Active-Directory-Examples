@@ -1,0 +1,38 @@
+* Active Directory Demo
+** Introduction
+This project was intended as research into integration with Active Directory in C#.  It currently supports multi-user search, and editing, deleting, and saving of individual users.
+
+** Setup
+The program will attempt to connect to the AD server at startup, so you'll have to edit the configuration before running.  Make sure that you supply:
+ - Server name or IP
+ - Username/password for a user with the rights to edit the AD store
+ - The path to the AD container that you want to edit/view
+
+*Note that, by default, new objects will be created in the root container, so make sure that you configure that correctly.*
+
+** Design
+*** ActiveDirectory.cs
+This module encapsulates the connection to the AD server.  It also handles some of the common activities performed over that connection.  It accepts and returns either strings, or types from the DirectoryServices.AccountManagement library.
+
+*** ADObject.cs
+ADObject contains a set of wrappers for the AccountManagement types.  This was an attempt to create a simpler, more unified interface for Active Directory objects.  As they currently exist, the AccountManagement interface uses a mix of string parameters and function calls to get and set various fields of the AD item.  ADObject handles all the necessary function calls, exposing only string parameters, or List<String> parameters.  This simplifies interaction with other classes, such as /BindingSource/, thus enabling very easy UI development.
+
+*Note that values stored in an ADObject are only stored locally until Save() is called!*
+
+ADObject depends on ActiveDirectory.cs for the direct interface to the server.
+
+** Troubleshooting
+*** The application appears to be connecting, but some functions return AD errors.
+If it isn't already, try setting the AD server as your secondary DNS.
+
+*** Objects (such as Users) are being created in the wrong place.
+Make sure that you have the correct ADContainer in the configuration.
+
+** Todo
+*** TODO Add more fields
+*** TODO Add group search
+*** TODO Add group display
+*** TODO Improve error handling
+*** TODO Add ability to search by group membership
+*** TODO Move connection configuration into "settings" UI
+*** TODO Add Connect/Disconnect UI
