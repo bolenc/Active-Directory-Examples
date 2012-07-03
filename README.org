@@ -28,6 +28,9 @@ If it isn't already, try setting the AD server as your secondary DNS.
 *** Objects (such as Users) are being created in the wrong place.
 Make sure that you have the correct ADContainer in the configuration.
 
+*** Can't find the correct Active Directory container/path
+The program [[http://technet.microsoft.com/en-us/sysinternals/bb963907.aspx][Active Directory Explorer]] is incredibly helpful in setting up connections to Active Directory.  Connect using AD Explorer, find your desired container, and copy the Path it displays.  Then paste this into the app config.
+
 ** Todo
 *** TODO Add more fields
 *** TODO Add group search
