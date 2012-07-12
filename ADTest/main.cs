@@ -10,6 +10,7 @@ using System.DirectoryServices.AccountManagement;
 using System.Windows.Forms;
 using System.Reflection;
 using System.Configuration;
+using ADLib;
 
 namespace ADDemo
 {
@@ -65,7 +66,10 @@ namespace ADDemo
             try
             {
                 //Connect to the AD server
-                ad = new ActiveDirectory();
+                ad = new ActiveDirectory(ConfigurationManager.AppSettings["AdContainer"],
+                                            ConfigurationManager.AppSettings["AdName"],
+                                            ConfigurationManager.AppSettings["AdUserId"],
+                                            ConfigurationManager.AppSettings["AdPassword"]);
             }
             catch (PrincipalServerDownException ex)
             {

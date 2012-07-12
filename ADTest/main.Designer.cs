@@ -69,7 +69,7 @@
             // 
             // search
             // 
-            this.search.Location = new System.Drawing.Point(417, 9);
+            this.search.Location = new System.Drawing.Point(417, 11);
             this.search.Name = "search";
             this.search.Size = new System.Drawing.Size(51, 23);
             this.search.TabIndex = 2;
@@ -86,7 +86,7 @@
             // 
             // queryString
             // 
-            this.queryString.Location = new System.Drawing.Point(232, 12);
+            this.queryString.Location = new System.Drawing.Point(232, 14);
             this.queryString.Name = "queryString";
             this.queryString.Size = new System.Drawing.Size(179, 20);
             this.queryString.TabIndex = 1;
@@ -100,7 +100,7 @@
             "Groups",
             "Users In Group",
             "All"});
-            this.searchType.Location = new System.Drawing.Point(12, 12);
+            this.searchType.Location = new System.Drawing.Point(12, 14);
             this.searchType.Name = "searchType";
             this.searchType.Size = new System.Drawing.Size(121, 21);
             this.searchType.TabIndex = 0;
@@ -140,9 +140,9 @@
             this.userDetail.Controls.Add(this.lblSurname);
             this.userDetail.Controls.Add(this.userName);
             this.userDetail.Controls.Add(this.lblName);
-            this.userDetail.Location = new System.Drawing.Point(12, 200);
+            this.userDetail.Location = new System.Drawing.Point(12, 202);
             this.userDetail.Name = "userDetail";
-            this.userDetail.Size = new System.Drawing.Size(428, 291);
+            this.userDetail.Size = new System.Drawing.Size(428, 257);
             this.userDetail.TabIndex = 4;
             this.userDetail.TabStop = false;
             this.userDetail.Text = "User";
@@ -349,7 +349,7 @@
             // 
             // save
             // 
-            this.save.Location = new System.Drawing.Point(446, 200);
+            this.save.Location = new System.Drawing.Point(446, 202);
             this.save.Name = "save";
             this.save.Size = new System.Drawing.Size(75, 23);
             this.save.TabIndex = 5;
@@ -359,7 +359,7 @@
             // 
             // newButton
             // 
-            this.newButton.Location = new System.Drawing.Point(474, 10);
+            this.newButton.Location = new System.Drawing.Point(474, 12);
             this.newButton.Name = "newButton";
             this.newButton.Size = new System.Drawing.Size(47, 23);
             this.newButton.TabIndex = 3;
@@ -369,7 +369,7 @@
             // 
             // deleteButton
             // 
-            this.deleteButton.Location = new System.Drawing.Point(446, 229);
+            this.deleteButton.Location = new System.Drawing.Point(446, 231);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(75, 23);
             this.deleteButton.TabIndex = 23;
@@ -380,7 +380,7 @@
             // searchResults
             // 
             this.searchResults.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.searchResults.Location = new System.Drawing.Point(12, 40);
+            this.searchResults.Location = new System.Drawing.Point(12, 42);
             this.searchResults.Name = "searchResults";
             this.searchResults.Size = new System.Drawing.Size(509, 150);
             this.searchResults.TabIndex = 24;

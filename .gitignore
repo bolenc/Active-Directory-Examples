@@ -2,3 +2,4 @@
 ADTest/obj/*
 ADTest/bin/*
 ADTest.suo
+ADTest/App.config.local

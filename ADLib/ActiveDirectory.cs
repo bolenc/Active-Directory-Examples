@@ -6,30 +6,33 @@ using System.DirectoryServices;
 using System.DirectoryServices.AccountManagement;
 using System.Configuration;
 
-namespace ADDemo
+namespace ADLib
 {
     /// <summary>
     /// Describes the type of active directory object
     /// </summary>
-    enum ADObjectType { User, Group, All };
+    public enum ADObjectType { User, Group, All };
 
     /// <summary>
     /// This class encapsulates an Active Directory connection, and handles common tasks
     /// </summary>
-    class ActiveDirectory
+    public class ActiveDirectory
     {
         PrincipalContext _Context = null;
         string _Container;
         string _Name;
-
+        string _userid;
+        string _password;
         /// <summary>
         /// Create an Active Directory connection
         /// </summary>
-        public ActiveDirectory()
+        public ActiveDirectory(string container, string name, string userid, string password)
         {
-            _Container = ConfigurationManager.AppSettings["AdContainer"];
-            _Name = ConfigurationManager.AppSettings["AdName"];
-            _Context = new PrincipalContext(ContextType.Domain, Name, Container, ConfigurationManager.AppSettings["AdUserId"], ConfigurationManager.AppSettings["AdPassword"]);
+            _Container = container;
+            _Name = name;
+            _userid = userid;
+            _password = password;
+            _Context = new PrincipalContext(ContextType.Domain, Name, Container, userid, password);
         }
 
         /// <summary>
@@ -148,9 +151,9 @@ namespace ADDemo
             List<Principal> results = new List<Principal>();
 
             //Get an 'entry' for the directory we want
-            DirectoryEntry entry = new DirectoryEntry(String.Format("LDAP://{0}", ConfigurationManager.AppSettings["AdName"]),
-                                                        ConfigurationManager.AppSettings["AdUserId"],
-                                                        ConfigurationManager.AppSettings["AdPassword"]);
+            DirectoryEntry entry = new DirectoryEntry(String.Format("LDAP://{0}", _Name),
+                                                        _userid,
+                                                        _password);
 
             //Create a 'searcher'
             DirectorySearcher searcher = new DirectorySearcher(entry);
@@ -172,8 +175,7 @@ namespace ADDemo
         /// <param name="message"></param>
         private static void SysMessage(string message)
         {
-            System.Diagnostics.Debug.WriteLineIf(ConfigurationManager.AppSettings["Debug"].Equals("true"),
-                                                    DateTime.UtcNow + " - " + message);
+            System.Diagnostics.Debug.WriteLine(DateTime.UtcNow + " - " + message);
         }
     }
 }

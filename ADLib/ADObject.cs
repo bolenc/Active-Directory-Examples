@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.DirectoryServices.AccountManagement;
 
-namespace ADDemo
+namespace ADLib
 {
     //This file contains classes that wrap Active Directory objects from
     // System.DirectoryServices.AccountManagement.  They are meant to
@@ -15,7 +15,7 @@ namespace ADDemo
     /// <summary>
     /// Exception raised when an Active Directory object is not found in a search
     /// </summary>
-    class ADNotFound : Exception
+    public class ADNotFound : Exception
     {
         public ADNotFound(string message)
             : base(message)
@@ -26,7 +26,7 @@ namespace ADDemo
     /// <summary>
     /// Represents a generic AD Principal object
     /// </summary>
-    abstract class ADObject
+    public abstract class ADObject
     {
         Principal _sourceItem;
         /// <summary>
@@ -88,7 +88,7 @@ namespace ADDemo
     /// <summary>
     /// Represents an AD User object, wraps an AD UserPrincipal
     /// </summary>
-    class ADUser : ADObject
+    public class ADUser : ADObject
     {
         UserPrincipal _sourceUser;
         ActiveDirectory _connection;
@@ -301,7 +301,7 @@ namespace ADDemo
     /// <summary>
     /// Represents an AD group.  Wrapper around a GroupPrincipal object
     /// </summary>
-    class ADGroup : ADObject
+    public class ADGroup : ADObject
     {
         ActiveDirectory _connection;
         GroupPrincipal _source;
@@ -315,7 +315,7 @@ namespace ADDemo
     /// <summary>
     /// Factory for creating ADObjects
     /// </summary>
-    class ADObjectFactory
+    public class ADObjectFactory
     {
         ActiveDirectory _connection;
 

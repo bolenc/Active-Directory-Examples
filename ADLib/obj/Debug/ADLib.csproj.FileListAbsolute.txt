@@ -1,0 +1,5 @@
+c:\users\bolenc\documents\visual studio 2010\Projects\ADLib\ADLib\bin\Debug\ADLib.dll
+c:\users\bolenc\documents\visual studio 2010\Projects\ADLib\ADLib\bin\Debug\ADLib.pdb
+c:\users\bolenc\documents\visual studio 2010\Projects\ADLib\ADLib\obj\Debug\ResolveAssemblyReference.cache
+c:\users\bolenc\documents\visual studio 2010\Projects\ADLib\ADLib\obj\Debug\ADLib.dll
+c:\users\bolenc\documents\visual studio 2010\Projects\ADLib\ADLib\obj\Debug\ADLib.pdb
