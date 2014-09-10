@@ -31,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DataMapper, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ShapePlexSync\DataMapper\bin\Debug\DataMapper.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.DirectoryServices" />
@@ -43,9 +47,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActiveDirectory.cs" />
+    <Compile Include="ADGroup.cs" />
     <Compile Include="ADObject.cs" />
+    <Compile Include="ADObjectFactory.cs" />
+    <Compile Include="ADUser.cs" />
+    <Compile Include="DEMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

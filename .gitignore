@@ -1,5 +1,7 @@
-﻿ADTest/bin/Debug/*
+ADTest/bin/Debug/*
 ADTest/obj/*
 ADTest/bin/*
 ADTest.suo
 ADTest/App.config.local
+ADLib/bin/
+ADLib/obj/

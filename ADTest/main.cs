@@ -26,7 +26,7 @@ namespace ADDemo
             InitializeComponent();
             //Initialize bindings
             userBinding.DataSource = typeof(ADUser);
-            groupBinding.DataSource = typeof(IList<String>);
+            groupBinding.DataSource = typeof(ICollection<String>);
 
             //Add bindings from controls to data structures
             userName.DataBindings.Add("Text", userBinding, "GivenName");
@@ -36,6 +36,22 @@ namespace ADDemo
             userEmail.DataBindings.Add("Text", userBinding, "EmailAddress");
             userMainPhone.DataBindings.Add("Text", userBinding, "VoiceTelephoneNumber");
             userSAMAccountName.DataBindings.Add("Text", userBinding, "SamAccountName");
+            userCompany.DataBindings.Add("Text", userBinding, "Company");
+            userIPPhone.DataBindings.Add("Text", userBinding, "IPPhone");
+            userMobile.DataBindings.Add("Text", userBinding, "Mobile");
+            userPager.DataBindings.Add("Text", userBinding, "Pager");
+            userPDON.DataBindings.Add("Text", userBinding, "PhysicalDeliveryOfficeName");
+            userAddress.DataBindings.Add("Text", userBinding, "StreetAddress");
+            userCity.DataBindings.Add("Text", userBinding, "City");
+            userState.DataBindings.Add("Text", userBinding, "State");
+            userPostalCode.DataBindings.Add("Text", userBinding, "PostalCode");
+            userCountry.DataBindings.Add("Text", userBinding, "Country");
+            userEmployeeType.DataBindings.Add("Text", userBinding, "EmployeeType");
+            userTitle.DataBindings.Add("Text", userBinding, "Title");
+            userDepartment.DataBindings.Add("Text", userBinding, "Department");
+            userManager.DataBindings.Add("Text", userBinding, "Manager");
+            userUPN.DataBindings.Add("Text", userBinding, "UserPrincipalName");
+
             userEnabled.DataBindings.Add("Checked", userBinding, "Enabled",true, DataSourceUpdateMode.OnPropertyChanged);
             searchResults.DataSource = userBinding;
             searchResults.AutoGenerateColumns = true;
@@ -171,8 +187,8 @@ namespace ADDemo
         /// <summary>
         /// Implements a multi-object search
         /// </summary>
-        /// <param name="name">Object name to search for</param>
-        private void Many_User_Search(string name)
+        /// <param name="value">Object name to search for</param>
+        private void Many_User_Search(string value, string field="displayName")
         {
             Boolean success = false;
             ADObjectFactory factory = new ADObjectFactory(ad);
@@ -185,7 +201,7 @@ namespace ADDemo
             try
             {
                 //For each Princpal returned by ad.Find...
-                foreach (Principal item in ad.Find(name, ADObjectType.User))
+                foreach (Principal item in ad.Find(new BaseCriteria(field, value)))
                 {
                     //Create an ADObject using the factory, and add it to the binding
                     userBinding.Add(factory.toADObject(item));
@@ -219,7 +235,7 @@ namespace ADDemo
             switch (searchType.Text)
             {
                 case "Users":
-                    Many_User_Search(queryString.Text);
+                    Many_User_Search(queryString.Text, ADField.Text);
                     break;
                 //case "Groups":
                 default:
@@ -331,7 +347,7 @@ namespace ADDemo
         {
             foreach (int index in userGroups.SelectedIndices)
             {
-                currentUser.Groups.RemoveAt(index);
+                currentUser.Groups.Remove((string)userGroups.Items[index]);
                 newGroup.Text = (string) userGroups.Items[index];
             }
             userBinding.ResetBindings(false);
@@ -465,6 +481,25 @@ namespace ADDemo
         {
             //Clear out controls and enable
             set_Control_Enable(true);
+        }
+
+        private void main_Load(object sender, EventArgs e)
+        {
+            ADUser temp = new ADUser(ad);
+
+            ADField.Items.Add("");
+
+            foreach (string field in temp.Fields.OrderBy(i=>i))
+            {
+                ADField.Items.Add(field);
+            }
+
+            ADField.SelectedIndex = 0;
+        }
+
+        private void ADField_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            queryString.Enabled = (ADField.Text != "");
         }
     }
 }
