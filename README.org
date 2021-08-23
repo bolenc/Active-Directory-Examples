@@ -2,6 +2,8 @@
 ** Introduction
 This project was intended as research into integration with Active Directory in C#.  It currently supports multi-user search, and editing, deleting, and saving of individual users.
 
+*Note that it is no longer maintained, and a dll is missing that I don't have access to anymore. I'm leaving the code available for reference.*
+
 ** Setup
 The program will attempt to connect to the AD server at startup, so you'll have to edit the configuration before running.  Make sure that you supply:
  - Server name or IP
